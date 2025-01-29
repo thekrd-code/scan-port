@@ -2,15 +2,15 @@ import socket
 
 def scan_ports(website, start_port, end_port):
     try:
-        ip = socket.gethostbyname(website)  # Resolve domain to IP
+        ip = socket.gethostbyname(website)
         print(f"Scanning {website} ({ip}) for open ports...")
         open_ports = []
 
         for port in range(start_port, end_port + 1):
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            sock.settimeout(0.5)  # Set timeout for connection attempts
-            result = sock.connect_ex((ip, port))  # Connect to the port
-            if result == 0:  # Port is open
+            sock.settimeout(0.5) 
+            result = sock.connect_ex((ip, port)) 
+            if result == 0:  
                 open_ports.append(port)
             sock.close()
 
@@ -27,7 +27,7 @@ def scan_ports(website, start_port, end_port):
         print(f"An unexpected error occurred: {e}")
         return []
 
-# Example usage
+# Ex
 if __name__ == "__main__":
     target_website = input("Enter the website URL (e.g., example.com): ")
     start_port = int(input("Enter the start port: "))
